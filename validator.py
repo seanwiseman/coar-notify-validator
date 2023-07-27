@@ -87,7 +87,8 @@ if __name__ == "__main__":
         "type": [
             "Announce",
             "coar-notify:ReviewAction"
-        ]
+        ],
+        "updated": "2022-10-06T15:00:00.000000"
     }
 
     valid = is_valid('announce-shape.ttl', payload)
