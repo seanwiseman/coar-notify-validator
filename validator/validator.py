@@ -9,14 +9,13 @@ _logger.setLevel(logging.INFO)
 
 
 shapeFiles = {}
-shape_files_dir = '../shapefiles'
 
 JSONLD = 'json-ld'
 TURTLE = 'ttl'
 
 
-def get_shape_graph(shape_filename: str) -> str:
-    with open(f'{shape_files_dir}/{shape_filename}', 'r') as f:
+def get_shape_graph(shape_file: str) -> str:
+    with open(shape_file, 'r') as f:
         return f.read()
 
 
@@ -91,5 +90,5 @@ if __name__ == "__main__":
         "updated": "2022-10-06T15:00:00.000000"
     }
 
-    valid = is_valid('announce-review-shape.ttl', payload)
+    valid = is_valid('./shapefiles/announce-review-shape.ttl', payload)
     print(f'The payload is valid: {valid}')
