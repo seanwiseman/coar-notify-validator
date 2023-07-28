@@ -9,7 +9,7 @@ _logger.setLevel(logging.INFO)
 
 
 shapeFiles = {}
-shape_files_dir = './shapefiles'
+shape_files_dir = '../shapefiles'
 
 JSONLD = 'json-ld'
 TURTLE = 'ttl'
@@ -66,19 +66,19 @@ if __name__ == "__main__":
             "id": "https://doi.org/10.1101/2022.10.06.511170"
         },
         "id": "urn:uuid:572b8e81-d92f-4ed5-8178-cc7f04f44cd1",
-        "object": {
-            "id": "https://sandbox.prereview.org/reviews/1223155",
-            "ietf:cite-as": "10.5072/zenodo.1223155",
-            "type": [
-                "Document",
-                "sorg:Review"
-            ]
-        },
-        "origin": {
-            "id": "https://sandbox.prereview.org/",
-            "inbox": "https://sandbox.prereview.org/inbox",
-            "type": "Service"
-        },
+        # "object": {
+        #     "id": "https://sandbox.prereview.org/reviews/1223155",
+        #     "ietf:cite-as": "10.5072/zenodo.1223155",
+        #     "type": [
+        #         "Document",
+        #         "sorg:Review"
+        #     ]
+        # },
+        # "origin": {
+        #     "id": "https://sandbox.prereview.org/",
+        #     "inbox": "https://sandbox.prereview.org/inbox",
+        #     "type": "Service"
+        # },
         "target": {
             "id": "https://bioxriv.org/",
             "inbox": "http://notify-inbox.info/inbox",
@@ -91,5 +91,5 @@ if __name__ == "__main__":
         "updated": "2022-10-06T15:00:00.000000"
     }
 
-    valid = is_valid('announce-shape.ttl', payload)
+    valid = is_valid('announce-review-shape.ttl', payload)
     print(f'The payload is valid: {valid}')
