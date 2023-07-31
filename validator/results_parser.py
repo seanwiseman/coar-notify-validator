@@ -8,14 +8,14 @@ def parse_validation_results(result_text: str) -> list[dict]:
 
     Example:
 
-    result_text = ''' Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+    >>> results_text = ''' Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
                     Severity: sh:Violation
                     Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:path [ sh:inversePath rdf:type ] ]
                     Focus Node: as:Announce
                     Result Path: [ sh:inversePath rdf:type ]
                     Message: Less than 1 values on as:Announce->[ sh:inversePath rdf:type ]'''
 
-    results = parse_validation_results(result_text)
+    >>> results = parse_validation_results(results_text)
 
     >>> print(results)
     [
