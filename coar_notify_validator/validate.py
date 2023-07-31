@@ -1,16 +1,11 @@
-import logging
 import json
 from rdflib import *
 import pyshacl
 
-from shape_files import ShapefileType
-from shape_files.read_shape_files import read_shape_file
-from validator.results_parser import parse_validation_results
-from validator.exceptions import GraphParseError
-
-
-_logger = logging.getLogger(__name__)
-_logger.setLevel(logging.INFO)
+from coar_notify_validator.shape_files import ShapefileType
+from coar_notify_validator.shape_files.read_shape_files import read_shape_file
+from coar_notify_validator.results_parser import parse_validation_results
+from coar_notify_validator.exceptions import GraphParseError
 
 
 shapeFiles = {}
@@ -35,8 +30,8 @@ def validate(shape_file_type: ShapefileType, payload: dict) -> tuple[bool, list[
 
     Example:
 
-    >>> from shape_files import ShapefileType
-    >>> from validator.validate import validate
+    >>> from coar_notify_validator.shape_files import ShapefileType
+    >>> from coar_notify_validator.validate import validate
 
     >>> payload = {} # An actual review offer COAR Notify payload.
 
@@ -61,11 +56,6 @@ def validate(shape_file_type: ShapefileType, payload: dict) -> tuple[bool, list[
         meta_shacl=False,
         serialize_report_graph=TURTLE,
     )
-
-    report_g = Graph()
-    report_g.parse(data=report_graph, format="ttl", encoding="utf-8")
     report_text = report_text.replace('"', '').replace('>', '')
-
-    _logger.info(report_text)
 
     return conforms, parse_validation_results(report_text)

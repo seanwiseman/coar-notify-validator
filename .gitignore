@@ -1,8 +1,8 @@
 
 tests/__pycache__/
 
-validator/__pycache__/
+coar_notify_validator/__pycache__/
 
 tests/validator/__pycache__/
 
-shape_files/__pycache__/
+coar_notify_validator/shape_files/__pycache__/

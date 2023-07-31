@@ -1,6 +1,6 @@
 import pytest
 
-from shape_files import ShapefileType
+from coar_notify_validator.shape_files import ShapefileType
 
 
 @pytest.fixture(scope="session")

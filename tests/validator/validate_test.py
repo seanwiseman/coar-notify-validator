@@ -1,8 +1,8 @@
 import pytest
 
-from shape_files import ShapefileType
-from validator.validate import validate
-from validator.exceptions import GraphParseError
+from coar_notify_validator.shape_files import ShapefileType
+from coar_notify_validator.validate import validate
+from coar_notify_validator.exceptions import GraphParseError
 
 
 @pytest.mark.parametrize(

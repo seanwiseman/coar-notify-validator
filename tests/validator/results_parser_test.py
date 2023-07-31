@@ -1,6 +1,6 @@
 import pytest
 
-from validator.results_parser import parse_validation_results
+from coar_notify_validator.results_parser import parse_validation_results
 
 
 @pytest.mark.parametrize(

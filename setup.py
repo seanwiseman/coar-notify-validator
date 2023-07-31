@@ -1,18 +1,18 @@
 from setuptools import setup
 
-import validator
+import coar_notify_validator
 
 setup(
-    name="coar-notify-validator",
-    version=validator.__version__,
+    name="coar-notify-coar_notify_validator",
+    version=coar_notify_validator.__version__,
     description="Utility for validating COAR Notify payloads.",
     packages=[
-        "validator",
-        "shape_files",
+        "coar_notify_validator",
+        "coar_notify_validator.shape_files",
     ],
     include_package_data=True,
     package_data={
-        "shape_files": ["shape_files/data/*.ttl"],
+        "shape_files": ["coar_notify_validator/shape_files/data/*.ttl"],
     },
     install_requires=[
         "kglab == 0.6.6",

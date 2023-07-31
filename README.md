@@ -13,8 +13,8 @@ python setup.py install
 #### Validate a COAR Notify payload against the schema
 
 ```python
-from shape_files import ShapefileType
-from validator.validate import validate
+from coar_notify_validator.shape_files import ShapefileType
+from coar_notify_validator.validate import validate
 
 valid_payload = {
     "@context": [
