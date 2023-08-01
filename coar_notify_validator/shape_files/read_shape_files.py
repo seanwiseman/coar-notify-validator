@@ -5,5 +5,6 @@ SHAPE_FILES_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + 
 
 
 def read_shape_file(file_name: str) -> str:
-    with open(os.path.join(SHAPE_FILES_DIR, f"{file_name}.ttl"), 'r') as f:
-        return f.read()
+    file_path = os.path.join(SHAPE_FILES_DIR, f"{file_name}.ttl")
+    with open(file_path, 'r', encoding="utf-8") as shape_file:
+        return shape_file.read()

@@ -1,19 +1,20 @@
 
 def parse_validation_results(result_text: str) -> list[dict]:
     """
-    Parses the results of a SHACL validation and returns a list of dictionaries containing the results.
+    Parses the results of a SHACL validation and returns a list of dictionaries
+    containing the results.
 
     :param result_text: str - the text output of a SHACL validation
     :return: list[dict] - list of dictionaries containing the results
 
     Example:
 
-    >>> results_text = ''' Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
-                    Severity: sh:Violation
-                    Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:path [ sh:inversePath rdf:type ] ]
-                    Focus Node: as:Announce
-                    Result Path: [ sh:inversePath rdf:type ]
-                    Message: Less than 1 values on as:Announce->[ sh:inversePath rdf:type ]'''
+    >>> results_text = '''Constraint Violation in MinCountConstraintComponent:
+    Severity: sh:Violation
+    Source Shape: [sh:minCount Literal("1", datatype=xsd:integer); sh:path[sh:inversePath rdf:type]]
+    Focus Node: as:Announce
+    Result Path: [ sh:inversePath rdf:type ]
+    Message: Less than 1 values on as:Announce->[ sh:inversePath rdf:type ]'''
 
     >>> results = parse_validation_results(results_text)
 
@@ -21,7 +22,7 @@ def parse_validation_results(result_text: str) -> list[dict]:
     [
         {
             "severity": "sh:Violation",
-            "source_shape": "[ sh:minCount Literal(\"1\", datatype=xsd:integer) ; sh:path [ sh:inversePath rdf:type ] ]",
+            "source_shape": "[sh:minCount Literal(\"1\");sh:path [sh:inversePath rdf:type]]",
             "focus_node": "as:Announce",
             "result_path": "[ sh:inversePath rdf:type ]",
             "message": "Less than 1 values on as:Announce->[ sh:inversePath rdf:type ]",

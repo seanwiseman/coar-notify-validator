@@ -1,5 +1,5 @@
 import json
-from rdflib import *
+from rdflib import Graph
 import pyshacl
 
 from coar_notify_validator.shape_files import ShapefileType
@@ -14,9 +14,9 @@ JSONLD = 'json-ld'
 TURTLE = 'ttl'
 
 
-def get_shape_graph(shape_file: str) -> str:
-    with open(shape_file, 'r') as f:
-        return f.read()
+def get_shape_graph(shape_file_path: str) -> str:
+    with open(shape_file_path, 'r', encoding="utf-8") as shape_file:
+        return shape_file.read()
 
 
 def validate(shape_file_type: ShapefileType, payload: dict) -> tuple[bool, list[dict]]:
@@ -25,8 +25,8 @@ def validate(shape_file_type: ShapefileType, payload: dict) -> tuple[bool, list[
 
     :param shape_file_type: ShapefileType - The type of shape file to validate against.
     :param payload: dict - The payload to validate.
-    :return: tuple[bool, list[dict]] - A tuple containing a boolean indicating whether the payload is valid and a list
-    of validation results.
+    :return: tuple[bool, list[dict]] - a boolean indicating whether the payload is valid
+    and a list of validation results.
 
     Example:
 
@@ -46,7 +46,7 @@ def validate(shape_file_type: ShapefileType, payload: dict) -> tuple[bool, list[
     if not instance_data_graph:
         raise GraphParseError("Unable to parse payload into Graph.")
 
-    conforms, report_graph, report_text = pyshacl.validate(
+    conforms, _, report_text = pyshacl.validate(
         instance_data_graph,
         shacl_graph=read_shape_file(shape_file_type.value),
         data_graph_format=JSONLD,
