@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  pylint:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the code
@@ -28,3 +28,6 @@ jobs:
 
       - name: Run pylint
         run: pylint --fail-under=10 coar_notify_validator
+
+      - name: Run flake8
+        run: flake8 coar_notify_validator
