@@ -4,7 +4,7 @@
 ### Installation
 
 ```bash
-python setup.py install
+pip install coar-notify-validator
 ```
 
 
