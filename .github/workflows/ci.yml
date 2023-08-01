@@ -9,12 +9,11 @@ on:
       - main
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -31,3 +30,6 @@ jobs:
 
       - name: Run flake8
         run: flake8 coar_notify_validator
+
+      - name: Run pytest
+        run: pytest tests
