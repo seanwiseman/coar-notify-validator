@@ -6,3 +6,5 @@ coar_notify_validator/__pycache__/
 tests/coar_notify_validator/__pycache__/
 
 coar_notify_validator/shape_files/__pycache__/
+
+tests/coar_notify_validator/shapes_files/__pycache__/

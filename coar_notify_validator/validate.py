@@ -3,7 +3,7 @@ from rdflib import Graph
 import pyshacl
 
 from coar_notify_validator.shape_files import ShapefileType
-from coar_notify_validator.shape_files.read_shape_files import read_shape_file
+from coar_notify_validator.shape_files.utils import read_shape_file
 from coar_notify_validator.results_parser import parse_validation_results
 from coar_notify_validator.exceptions import GraphParseError
 
