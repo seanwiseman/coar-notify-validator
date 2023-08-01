@@ -26,7 +26,7 @@ setup(
     maintainer="Sean Wiseman",
     maintainer_email="seanwiseman2012@gmail.com",
     classifiers=[
-        "Development Status :: 1 - Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
