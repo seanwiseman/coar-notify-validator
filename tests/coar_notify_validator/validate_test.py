@@ -1,8 +1,8 @@
 import pytest
 
 from coar_notify_validator.shape_files import ShapefileType
-from coar_notify_validator.validate import validate, validate_by_payload_type
-from coar_notify_validator.exceptions import GraphParseError
+from coar_notify_validator.validate import validate
+from coar_notify_validator.exceptions import MissingNotificationType, InvalidNotificationType
 
 
 @pytest.mark.parametrize(
@@ -23,7 +23,7 @@ from coar_notify_validator.exceptions import GraphParseError
     ],
 )
 def test_can_successfully_validate(shape_file_type, expected, valid_payloads):
-    assert validate(shape_file_type, valid_payloads[shape_file_type]) == expected
+    assert validate(valid_payloads[shape_file_type]) == expected
 
 
 @pytest.mark.parametrize(
@@ -78,9 +78,14 @@ def test_can_successfully_validate(shape_file_type, expected, valid_payloads):
     ],
 )
 def test_can_fail_validation(shape_file_type, expected, invalid_payloads):
-    assert validate(shape_file_type, invalid_payloads[shape_file_type]) == expected
+    assert validate(invalid_payloads[shape_file_type]) == expected
 
 
 def test_raises_exception_when_empty_payload_passed():
-    with pytest.raises(GraphParseError):
-        validate(ShapefileType.ANNOUNCE_REVIEW, {})
+    with pytest.raises(MissingNotificationType):
+        validate({})
+
+
+def test_raises_exception_when_payload_contains_invalid_type():
+    with pytest.raises(InvalidNotificationType):
+        validate({"type": "invalid-type"})
