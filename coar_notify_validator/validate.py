@@ -3,7 +3,10 @@ from rdflib import Graph
 import pyshacl
 
 from coar_notify_validator.shape_files import ShapefileType
-from coar_notify_validator.shape_files.utils import read_shape_file
+from coar_notify_validator.shape_files.utils import (
+    get_shape_file_type_from_notification_type,
+    read_shape_file,
+)
 from coar_notify_validator.results_parser import parse_validation_results
 from coar_notify_validator.exceptions import GraphParseError
 
@@ -59,3 +62,30 @@ def validate(shape_file_type: ShapefileType, payload: dict) -> tuple[bool, list[
     report_text = report_text.replace('"', '').replace('>', '')
 
     return conforms, parse_validation_results(report_text)
+
+
+def validate_by_payload_type(notification_type: list[str] | str, payload: dict) -> tuple[bool, list[dict]]:
+    """
+    Validate a COAR Notify payload against a SHACL shape file.
+
+    :param notification_type: list[str] | str - The type of notification to validate against.
+    :param payload: dict - The payload to validate.
+    :return: tuple[bool, list[dict]] - a boolean indicating whether the payload is valid
+    and a list of validation results.
+
+    Example:
+
+    >>> from coar_notify_validator.validate import validate_by_payload_type
+
+    >>> payload = {} # An actual review offer COAR Notify payload.
+
+    >>> conforms, errors = validate_by_payload_type(["Offer", "coar-notify:ReviewAction"], payload)
+    >>> print(conforms)
+    True
+    >>> print(errors)
+    []
+    """
+    shape_file_type = get_shape_file_type_from_notification_type(notification_type)
+    if shape_file_type is None:
+        raise ValueError(f"Invalid notification type: {notification_type}")
+    return validate(shape_file_type, payload)
