@@ -13,9 +13,6 @@ setup(
         "coar_notify_validator.shape_files",
     ],
     include_package_data=True,
-    package_data={
-        "shape_files": ["coar_notify_validator/shape_files/data/*.ttl"],
-    },
     install_requires=[
         "kglab == 0.6.6",
         "rdflib == 6.3.2",
