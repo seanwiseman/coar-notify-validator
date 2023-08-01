@@ -6,6 +6,8 @@ setup(
     name="coar-notify-coar_notify_validator",
     version=coar_notify_validator.__version__,
     description="Utility for validating COAR Notify payloads.",
+    long_description_content_type='text/markdown',
+    long_description=open('README.md').read(),
     packages=[
         "coar_notify_validator",
         "coar_notify_validator.shape_files",
