@@ -1,5 +1,6 @@
 # coar-notify-validator
 
+[![PyPI version](https://badge.fury.io/py/coar-notify-validator.svg)](https://badge.fury.io/py/coar-notify-validator)
 
 ### Installation
 
