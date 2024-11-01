@@ -15,7 +15,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "kglab == 0.6.6",
-        "rdflib == 6.3.2",
+        "rdflib == 7.1.1",
         "pyshacl == 0.23.0",
     ],
     license="MIT",
